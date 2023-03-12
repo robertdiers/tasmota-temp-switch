@@ -45,16 +45,19 @@ def flatten_json(y):
 
 def on_message(client, userdata, message):
     global searchattributes
-    global valueattributes
     content = str(message.payload.decode("utf-8"))
     #print(content)
     json_object = flatten_json(json.loads(content))
     #print(json_object)
+    valueattributes_tmp = {}
     for attribute in searchattributes:
         if attribute in json_object:
-            valueattributes[attribute] = json_object[attribute]
+            valueattributes_tmp[attribute] = json_object[attribute]
         else:
-            valueattributes[attribute] = "n/a"
+            valueattributes_tmp[attribute] = "n/a"
+    #assign only once
+    global valueattributes
+    valueattributes = valueattributes_tmp
 
 def get(name, statusnumber, attributes):
     try:
