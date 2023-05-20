@@ -22,7 +22,7 @@ TEMP_ON (default: 33)
 
 TEMP_OFF (default: 30)
 
-docker run -d --restart always -e MQTT_PASSWORD=password --name tasmotatempswitch ghcr.io/robertdiers/tasmota-temp-switch:1.0
+docker run -d --restart always -e MQTT_BROKER=192.168.1.7 -e MQTT_PASSWORD=password --name tasmotatempswitch ghcr.io/robertdiers/tasmota-temp-switch:1.2
 
 ### create Docker image for your architecture
 ./image.sh
